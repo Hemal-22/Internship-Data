@@ -1,0 +1,17 @@
+ Create table users (
+  id int AUTO_INCREMENT PRIMARY KEY,
+  firstname varchar(255),
+  lastname varchar(255),
+  age int,
+  gender varchar(255),
+  created_at varchar(255),
+  updated_at varchar(255),
+  deleted_at varchar(255)
+);
+
+insert into users (id ,firstname ,lastname ,age ,gender ,created_at ,updated_at ,deleted_at)
+VALUES (1,'hemal','thakkar',22,'female','abc','def','xyz');
+
+
+select * from users;
+

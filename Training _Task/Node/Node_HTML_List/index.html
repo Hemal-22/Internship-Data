@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+    <title>Express HTML</title>
+</head>
+<body>
+  <!-- <div id="show-data">
+    
+  </div> -->
+
+  <div class="show-data">
+    <table>
+        <tr>
+            <td>ID</td>
+            <td>Email</td>
+            <td>First Name</td>
+            <td>Last Name</td>            
+        </tr>
+    </table>
+
+    <table id="form-data">
+        <tbody></tbody>
+    </table>
+</div>
+
+</body>
+<script>
+
+
+//https://reqres.in/api/users/2
+function fetchData(){
+  fetch('https://reqres.in/api/users').then( function(response) {
+   //console.log(response);
+   if(!response.ok){
+     throw Error("error in response")
+   }
+    return response.json()
+  })
+  .then(data =>{
+       let tempList = fetchData();
+       //console.log(tempList);
+       let tableObj = document.getElementById("form-data");
+       let tempHTML='';
+    console.log(data.data);
+    const html = data.data 
+
+
+    .map(user => {
+    
+    let rowHTML = '<tr>';
+               rowHTML += '<td>'+user.id+'</td> '
+               rowHTML += '<td>'+user.email+'</td> '
+               rowHTML += '<td>'+user.first_name+'</td> '
+               rowHTML += '<td>'+user.last_name+'</td> '
+               rowHTML +='</tr>';
+              tempHTML += rowHTML;
+   })
+ 
+          tableObj.tBodies[0].innerHTML = tempHTML;
+  })
+  
+  .catch(error => {
+    console.log(error)
+  });
+}
+  fetchData();
+
+ 
+</script>
+</html>

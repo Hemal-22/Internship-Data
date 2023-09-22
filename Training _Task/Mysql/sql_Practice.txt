@@ -1,0 +1,151 @@
+***** Database : *****
+
+Create database batch_2022_Hemal;
+
+***** Table creation : *****
+
+Create table users (
+			id int AUTO_INCREMENT PRIMARY KEY,
+                        firstname varchar(255),
+                        lastname varchar(255),
+                        age int,
+                        gender varchar(255),
+                      	created_at varchar(255),
+                        updated_at varchar(255),
+                        deleted_at varchar(255)
+                   );
+
+
+***** Data Insert : *****
+
+ insert into users (id ,firstname ,lastname ,age ,gender ,created_at ,updated_at ,deleted_at) VALUES (1,'hemal','thakkar',22,'female','abc','def','xyz');
+ insert into users (id ,firstname ,lastname ,age ,gender ,created_at ,updated_at ,deleted_at) VALUES (2,'het','shah',25,'male','bnm','iop','zxc');
+
+
+
+***** Show Data *****
+
+select * from users;
++----+-----------+----------+-----+--------+------------+------------+------------+
+| id | firstname | lastname | age | gender | created_at | updated_at | deleted_at |
++----+-----------+----------+-----+--------+------------+------------+------------+
+|  1 | hemal     | thakkar  |  22 | female | abc        | def        | xyz        |
+|  2 | het       | shah     |  25 | male   | bnm        | iop        | zxc        |
++----+-----------+----------+-----+--------+------------+------------+------------+
+
+
+***** Primary Key *****
+
+Create table users (
+			id int AUTO_INCREMENT PRIMARY KEY,
+                        firstname varchar(255),
+                        lastname varchar(255),
+                        age int,
+                        gender varchar(255),
+                      	created_at varchar(255),
+                        updated_at varchar(255),
+                        deleted_at varchar(255),
+			primary key (id)
+                   );
+
+
+***** Foreign Key *****
+
+Create table posts (
+			id int AUTO_INCREMENT PRIMARY KEY,
+			user_id int,
+			title varchar(255),
+                        short_Desc varchar(255),
+                        desc varchar(255),
+			view varchar(255),
+                      	created_at varchar(255),
+                        updated_at varchar(255),
+                        deleted_at varchar(255),
+			primary key (id),
+			foreign key (user_id) REFERENCES users(id)
+                   );
+
+
+***** Data Insert : *****
+
+insert into posts (id ,user_id ,title ,short_Desc ,desc ,view,created_at ,updated_at ,deleted_at) VALUES (1,005,'hello world','how are you all','good morning,'good','hgjhg','gnjfg','xyz');
+insert into posts (id ,user_id ,title ,short_Desc ,desc ,view,created_at ,updated_at ,deleted_at) VALUES (2,045,'hello john','how was your day','what are you doing,'good','ytiu','nhyn','zqaz');
+
+
+
+Create table comment (
+			id int AUTO_INCREMENT PRIMARY KEY,
+			post_id int,
+			user_id int,
+			content varchar(255),
+                      	created_at varchar(255),
+                        updated_at varchar(255),
+                        deleted_at varchar(255),
+			primary key (id),
+			foreign key (post_id) REFERENCES posts(id)
+			foreign key (user_id) REFERENCES users(id)
+                   );
+
+
+***** Data Insert : *****
+
+insert into comment (id ,post_id,user_id ,content, created_at ,updated_at ,deleted_at) VALUES (1,005,501,'hello world','hgjhg','gnjfg','xyz');
+insert into comment (id ,post_id,user_id ,content, created_at ,updated_at ,deleted_at) VALUES (3,078,70,'good morning','ihty','nhjy','wgf');
+
+
+***** Rename the Table Col : *****
+
+alter table comment  
+change coloumn post_id posts_id  
+int ;  
+
+
+***** Rename The Table *****
+
+alter table comment  
+rename to comments; 
+
+
+***** Where *****
+
+select * FROM users
+where firstname = 'hemal';
+
+
+***** And Or Not *****
+
+select * FROM users
+where lastname = 'shah' AND gender = 'male';
+
+select * FROM users
+where lastname = 'shah' OR lastname = 'thakkar';
+
+select * FROM comments
+where NOT content = 'good morning';
+
+
+select * FROM users
+where firstname = 'hemal' AND (lastname = 'thakkar' OR lastname = 'shah');
+
+*****  Update *****
+
+update users
+SET firstname = 'raj', lastname = 'shah'
+WHERE id = 2;
+
+
+***** Delete *****
+
+delete from comments WHERE content='hello world';
+
+***** Like / Wild cards *****
+
+select * FROM comments
+where content LIKE '%d';
+
+***** Between *****
+select * FROM posts
+WHERE post_id BETWEEN 5 AND 10;
+
+
+

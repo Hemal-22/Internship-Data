@@ -1,0 +1,108 @@
+<!--Exercise for today: (After completing existing exercises)
+- Initialise firebase in your project
+- Connect with DB
+- Create list of the users using table and firebase db
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Collecting Data</title>
+	<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+	</script>-->
+</head>
+
+<body class="container" style="margin-top: 50px;width: 50%; height:auto;">
+    <h2 class="text-primary" style="margin-left: 15px; margin-bottom: 10px">
+		USER COLLECTION DATA
+	</h2>
+
+	<form class="container" id="contactForm">
+		<div class="card">
+			<div class="card-body">
+				<div class="form-group">
+					<label for="Name">Enter Your Name</label>
+                    <input type="text" class="form-control"id="name" placeholder="Enter your name">
+				</div>
+                <div class="form-group">
+					<label for="email">Email address</label>
+                    <input type="email" class="form-control"id="email" placeholder="abc@example.com">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-primary"style="margin-left: 15px; margin-top: 10px">Submit </button>
+		</div>
+	</form>
+
+	<!--<script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js"></script>-->
+
+</body>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyAr8hEnR7vQCp6cLjUsBopz9EGLxK_nMoI",
+      authDomain: "exercise1-8774c.firebaseapp.com",
+      projectId: "exercise1-8774c",
+      storageBucket: "exercise1-8774c.appspot.com",
+      messagingSenderId: "614765495414",
+      appId: "1:614765495414:web:ef7c0f552ac694c02fcb57"
+    };
+    var messagesRef = firebase.database()
+			.ref('Collected Data');
+
+		document.getElementById('contactForm')
+			.addEventListener('submit', submitForm);
+
+		function submitForm(e) {
+			e.preventDefault();
+
+			// Get values
+			var name = getInputVal('name');
+			var email = getInputVal('email');
+
+			saveMessage(name, email);
+			document.getElementById('contactForm').reset();
+		}
+
+		// Function to get get form values
+		function getInputVal(id) {
+			return document.getElementById(id).value;
+		}
+
+		// Save message to firebase
+		function saveMessage(name, email) {
+			var newMessageRef = messagesRef.push();
+			newMessageRef.set({
+				name: name,
+				email: email,
+			});
+		}
+    // Initialize Firebase
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+    console.log(db);
+
+    // Get a list of users from your database
+    async function getusers(db) {
+    const usersCol = collection(db, 'udata');
+    const userSnapshot = await getDocs(usersCol);
+    const userList = userSnapshot.docs.map(doc => doc.data());
+    return userList;
+
+    }
+    let tempList = await getusers(db);
+    console.log(tempList);
+
+</script>
+
+
+</html>

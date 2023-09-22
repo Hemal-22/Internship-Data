@@ -1,0 +1,212 @@
+/* about */
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="./css/about.css">
+    <title>About page</title>
+</head>
+<body>
+    <section class="header">
+        <a href="settings.html"><i class="fas fa-chevron-left"></i></a>
+    </section>
+    <section class="main">
+        <h1 style="text-align: center;  color: #be302c;">ABOUT US</h1>
+        <div class="logo">
+            <img src="./images/logo.png" alt="">
+            <h1 style="color: #be302c;"> CORLYTICS</h1>
+        </div>
+        <p>
+            Coryltics provides relvant insight  into the size, scope and root causes  of regulatory risk.
+        </p>
+        <div class="middle">
+            <div>
+                <span>For further information</span>
+                <i style="font-size: 20px; color: grey;"  class="fas fa-envelope-square"></i>
+            </div>
+            <div>
+                <span>For any technical issues</span>
+                <i style="font-size: 20px;  color: grey;"  class="fas fa-envelope-square"></i>
+            </div>
+            <div>
+                <span>For delete your account</span>
+                <i style="font-size: 20px;  color: grey;"  class="fas fa-envelope-square"></i>
+            </div>
+            <div class="link">
+            <a href="">Coryltics Privacy Policy</a>
+            <a href="">Coryltics terms of service</a>
+            </div>
+        </div>
+
+    </section>
+    <section class="footer">
+        <footer>
+           <div class="footbtn">
+               <i style="font-size: 20px;" class="fas fa-home"></i>
+               <a href="home.html">Home</a>
+            </div>
+             <div class="footbtn">
+               <i style="font-size: 20px; " class="far fa-bookmark"></i>
+               <a  href="bookmarks.html">Bookmarks</a>
+             </div>
+             <div class="footbtn">
+               <i style="font-size: 20px; color: #be302c;" class="fas fa-sliders-h"></i>
+               <a href="#" style="color: #be302c;">Settings</a>
+             </div>
+
+        </footer>
+    </section>
+</body>
+</html>
+
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+   }
+   body{
+    overflow: hidden;
+}
+.header{
+    position: sticky;
+    top: 1%;
+    margin: 10px;
+}
+.header a{
+    color: #be302c;
+}
+
+/* main */
+
+.main{
+    color: black;
+    font-size: 25px;
+    margin-top: 20px;
+    min-height: 80vh
+}
+.logo img{
+    width: 30px;
+    border-radius: 50%
+}
+
+.logo{
+    margin: 5% 40px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.main p{
+    margin: 5% 40px;
+}
+.middle{
+    display: flex;
+    flex-direction: column;
+    margin: 5% 10%;
+    gap: 2.5rem ;
+}
+.link{
+    flex-direction: column;
+}
+.middle a{
+    color: #be302c;
+}
+.middle div{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+/* footer css */
+
+.footer{
+    bottom: 1px;
+    width: 100%;
+    position: sticky;
+    color: grey;
+    background-color:  rgb(223, 215, 215);;
+}
+footer{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+}
+.btn{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.footbtn{
+    display: flex;
+    flex-direction: column;
+    bottom: 2px;
+    align-items: center;
+    gap: 0.5rem;
+}
+footer a{
+    color: grey;
+    text-decoration: none;
+}
+a:link {
+    color: #be302c;
+  }
+
+   @media screen and (max-width: 430px){
+       .logo{
+           margin-top: 60px;
+       }
+       .main{
+           font-size: 12px;
+       }
+       main p{
+           font-size: 10px;
+       }
+
+
+
+}
+
+@media screen and (min-width: 540px) and (max-width: 800px){
+    .logo{
+        margin-top: 60px;
+    }
+    .main{
+        margin-top: 80px;
+        font-size: 20px;
+    }
+    main p{
+        font-size: 20px;
+    }
+    footer{
+        margin-top: 100px;
+    }
+}
+
+@media screen and (min-width: 800px) and (max-width: 915px){
+    .logo{
+        margin-top: 60px;
+    }
+    .main{
+        margin-top: 80px;
+        font-size: 30px;
+    }
+    .main h1{
+        margin-top: 90px;
+    }
+    main p{
+        font-size: 20px;
+    }
+    footer{
+        margin-top: 150px;
+    }
+}

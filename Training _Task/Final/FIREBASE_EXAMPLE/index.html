@@ -1,0 +1,49 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> connect html with firebase </title>
+</head>
+<body>
+  <h1> hello </h1>
+
+</body>
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-firestore.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyC0iiUIJILDDN-9_fb2QPBOovDhDqabJeQ",
+      authDomain: "training-fe088.firebaseapp.com",
+      projectId: "training-fe088",
+      storageBucket: "training-fe088.appspot.com",
+      messagingSenderId: "1058542630231",
+      appId: "1:1058542630231:web:7497ae8b6fa32da8c03a12"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    console.log(db);
+
+    // Get a list of users from your database
+    async function getusers(db) {
+    const usersCol = collection(db, 'Practice');
+    const userSnapshot = await getDocs(usersCol);
+    const userList = userSnapshot.docs.map(doc => doc.data());
+    return userList;
+
+    }
+    let tempList = await getusers(db);
+    console.log(tempList);
+
+  </script>
+</html>

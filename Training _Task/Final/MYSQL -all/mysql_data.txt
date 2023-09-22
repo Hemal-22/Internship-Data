@@ -1,0 +1,135 @@
+MySQL Shell 8.0.28
+
+Copyright (c) 2016, 2022, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+
+ MySQL  SQL > \connect root@localhost
+Creating a session to 'root@localhost'
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 19 (X protocol)
+Server version: 8.0.28 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ 
+ MySQL  localhost:33060+ ssl  SQL > use batch_2022_Hemal;
+Default schema set to `batch_2022_Hemal`.
+Fetching table and column names from `batch_2022_hemal` for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  batch_2022_hemal  SQL > select * from table user;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table user' at line 1
+ MySQL  localhost:33060+ ssl  batch_2022_hemal  SQL > Create table users (
+                                                   ->   id int AUTO_INCREMENT PRIMARY KEY,
+                                                   ->   firstname varchar(255),
+                                                   ->   lastname varchar(255),
+                                                   ->   age int,
+                                                   ->   gender varchar(255),
+                                                   ->   created_at varchar(255),
+                                                   ->   updated_at varchar(255),
+                                                   ->   deleted_at varchar(255)
+                                                   -> );
+Query OK, 0 rows affected (0.0509 sec)
+ MySQL  localhost:33060+ ssl  batch_2022_hemal  SQL > insert into users (id ,firstname ,lastname ,age ,gender ,created_at ,updated_at ,deleted_at)
+                                                   -> VALUES (1,'hemal','thakkar',22,'female','abc','def','xyz');
+Query OK, 1 row affected (0.0142 sec)
+ MySQL  localhost:33060+ ssl  batch_2022_hemal  SQL > insert into users (id ,firstname ,lastname ,age ,gender ,created_at ,updated_at ,deleted_at) VALUES (2,'het','shah',25,'male','bnm','iop','zxc');
+Query OK, 1 row affected (0.0065 sec)
+ MySQL  localhost:33060+ ssl  batch_2022_hemal  SQL > insert into users (id ,firstname ,lastname ,age ,gender ,created_at ,updated_at ,deleted_at) VALUES (3,'diya','shah',26,'female','qwe','rty','yui');
+Query OK, 1 row affected (0.0063 sec)
+ MySQL  localhost:33060+ ssl  batch_2022_hemal  SQL > insert into users (id ,firstname ,lastname ,age ,gender ,created_at ,updated_at ,deleted_at) VALUES (4,'deep','patel',20,'male','qwe','rty','yui');
+Query OK, 1 row affected (0.0069 sec)
+ MySQL  localhost:33060+ ssl  batch_2022_hemal  SQL > select * from table users;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table users' at line 1
+ MySQL  localhost:33060+ ssl  batch_2022_hemal  SQL > select * from users;
++----+-----------+----------+-----+--------+------------+------------+------------+
+| id | firstname | lastname | age | gender | created_at | updated_at | deleted_at |
++----+-----------+----------+-----+--------+------------+------------+------------+
+|  1 | hemal     | thakkar  |  22 | female | abc        | def        | xyz        |
+|  2 | het       | shah     |  25 | male   | bnm        | iop        | zxc        |
+|  3 | diya      | shah     |  26 | female | qwe        | rty        | yui        |
+|  4 | deep      | patel    |  20 | male   | qwe        | rty        | yui        |
++----+-----------+----------+-----+--------+------------+------------+------------+
+4 rows in set (0.0007 sec)
+ MySQL  localhost:33060+ ssl  batch_2022_hemal  SQL >
+
+
+
+***** Database : *****
+
+Create database batch_2022_Hemal;
+
+***** Table creation : *****
+
+Create table users (
+			id int AUTO_INCREMENT PRIMARY KEY,
+                        firstname varchar(255),
+                        lastname varchar(255),
+                        age int,
+                        gender varchar(255),
+                      	created_at varchar(255),
+                        updated_at varchar(255),
+                        deleted_at varchar(255)
+                   );
+
+
+***** Data Insert : *****
+
+ insert into users (id ,firstname ,lastname ,age ,gender ,created_at ,updated_at ,deleted_at) VALUES (1,'hemal','thakkar',22,'female','abc','def','xyz');
+ insert into users (id ,firstname ,lastname ,age ,gender ,created_at ,updated_at ,deleted_at) VALUES (2,'het','shah',25,'male','bnm','iop','zxc');
+
+
+
+***** Show Data *****
+
+select * from users;
++----+-----------+----------+-----+--------+------------+------------+------------+
+| id | firstname | lastname | age | gender | created_at | updated_at | deleted_at |
++----+-----------+----------+-----+--------+------------+------------+------------+
+|  1 | hemal     | thakkar  |  22 | female | abc        | def        | xyz        |
+|  2 | het       | shah     |  25 | male   | bnm        | iop        | zxc        |
++----+-----------+----------+-----+--------+------------+------------+------------+
+
+
+***** Primary Key *****
+
+Create table users (
+			id int AUTO_INCREMENT PRIMARY KEY,
+                        firstname varchar(255),
+                        lastname varchar(255),
+                        age int,
+                        gender varchar(255),
+                      	created_at varchar(255),
+                        updated_at varchar(255),
+                        deleted_at varchar(255),
+			primary key (id)
+                   );
+
+
+***** Foreign Key *****
+
+Create table posts (
+			id int AUTO_INCREMENT PRIMARY KEY,
+			user_id int,
+			title varchar(255),
+                        short_Desc varchar(255),
+                        desc varchar(255),
+			view varchar(255),
+                      	created_at varchar(255),
+                        updated_at varchar(255),
+                        deleted_at varchar(255),
+			primary key (id),
+			foreign key (user_id) REFERENCES users(id)
+                   );
+
+
+***** Data Insert : *****
+
+insert into posts (id ,user_id ,title ,short_Desc ,desc ,view,created_at ,updated_at ,deleted_at) VALUES (1,005,'hello world','how are you all','good morning,'good','hgjhg','gnjfg','xyz');
+insert into posts (id ,user_id ,title ,short_Desc ,desc ,view,created_at ,updated_at ,deleted_at) VALUES (2,045,'hello john','how was your day','what are you doing,'good','ytiu','nhyn','zqaz');
+
+
+
+
+

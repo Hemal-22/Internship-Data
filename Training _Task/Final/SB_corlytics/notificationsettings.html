@@ -1,0 +1,194 @@
+/* notification settings */
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="./css/reset.css">
+    <title>Notification page</title>
+</head>
+
+<body>
+    <section class="header">
+        <a href="settings.html"><i class="fas fa-chevron-left"></i></a>
+    </section>
+    <section  class="main">
+        <h1 style="text-align: center;  color: #be302c;">NOTIFICATION SETTINGS</h1>
+        <form class="form" action="settings.html">
+            <div>
+                <input type="radio" id="none" name="notification" value="None" required>
+                <label for="none">None</label><br>
+            </div>
+            <div>
+                <input type="radio" id="daily" name="notification" value="Daily Email" required>
+                <label for="daily">Daily Email</label><br>
+            </div>
+
+            <div  class="btn">
+                <button type="submit">Update</button>
+            </div>
+        </form>
+    </section>
+    <section class="footer">
+        <footer>
+
+            <div class="footbtn">
+                <i style="font-size: 20px;" class="fas fa-home"></i>
+                <a href="home.html">Home</a>
+            </div>
+            <div class="footbtn">
+                <i style="font-size: 20px; " class="far fa-bookmark"></i>
+                <a href="bookmarks.html">Bookmarks</a>
+            </div>
+            <div class="footbtn">
+                <i style="font-size: 20px; color: #be302c;" class="fas fa-sliders-h"></i>
+                <a href="#" style="color: #be302c;">Settings</a>
+            </div>
+
+        </footer>
+</body>
+
+</html>
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+   }
+
+   body{
+    overflow: hidden;
+}
+
+.header{
+    position: sticky;
+    top: 1%;
+    margin: 10px;
+}
+.header a{
+    color: #be302c;
+}
+
+/* main css */
+.main{
+    margin-top: 100px;
+    color: black;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+}
+form{
+     margin: 10px 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.form{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.form div{
+    display: flex;
+    gap: 0.5rem;
+
+}
+input{
+    border: none;
+    border-bottom: 2px solid grey;
+}
+.btn{
+    margin-top: 20px;
+    background-color: #be302c;
+    color: white;
+    padding: 10px;
+font-weight:800;
+text-align: center;
+width: 100%;
+}
+button{
+    background-color: transparent;
+       border: none;
+       color: white;
+       font-size: 15px;
+   }
+.form label{
+    font-size: 20px;
+}
+
+/* footer css */
+.footer{
+    bottom: 1px;
+    width: 100%;
+    position: sticky;
+    color: grey;
+    background-color:  rgb(223, 215, 215);;
+}
+footer{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+}
+.btn{
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+.footbtn{
+    display: flex;
+    flex-direction: column;
+    bottom: 2px;
+    align-items: center;
+    gap: 0.5rem;
+}
+footer a{
+    color: grey;
+    text-decoration: none;
+}
+a:link {
+    color: #be302c;
+  }
+
+   @media screen and (max-width: 430px){
+
+    .main h1{
+        font-size: 18px;
+    }
+    footer{
+        padding: 20px;
+    }
+    .form label{
+        font-size: 12px;
+    }
+
+
+}
+
+
+/* @media screen and (min-width: 540px) and (max-width: 800px){
+
+} */
+
+
+@media screen and (min-width: 800px) and (max-width: 915px){
+    .header a{
+        font-size: 30px;
+    }
+  .main{
+      font-size: 20px;
+  }
+}

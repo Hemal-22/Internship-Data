@@ -1,0 +1,25 @@
+
+body {
+    text-align: center;
+   
+}
+
+table td, th {
+    border: solid #fff 1px;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+}
+table {
+   
+    width: 100%;
+}
+
+a{
+    color: #000; 
+}
+
+h1 {
+    color:#000; 
+    text-align: center;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Students Details Form</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+   
+    <form action="index.html" method="POST" id="form">
+        <h1>PLEASE FILL DETAILS </h1>
+        <p> First Name: <input type="text" placeholder="First Name" name="fname" required></p>
+        <p> Last Name: <input type="text" placeholder="Last Name" name="lname" required></p>
+        <p> Sem: <input type="text" placeholder="Sem" name="sem" required></p>
+        <p> Stream: <input type="text" placeholder="Stream" name="stream" required></p>
+        <p> Contact: <input type="text" placeholder="Contact" name="contact" required></p>
+        <p> Clg / Uni: <input type="text" placeholder="Clg / Uni " name="clg" required></p>
+        <input type="submit" id="submit">
+        <!--<button id="Insbtn"> INSERT </button>-->
+    </form>
+</body>
+<script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-app.js";
+    import { getFirestore, collection, getDoc, setDoc, doc, addDoc } from "https://www.gstatic.com/firebasejs/9.6.6/firebase-firestore.js";
+    const firebaseConfig = {
+    apiKey: "AIzaSyAS5na7o1PtVkoyYi3ovUKUNO8TfpwXMhg",
+    authDomain: "practice-6de67.firebaseapp.com",
+    projectId: "practice-6de67",
+    storageBucket: "practice-6de67.appspot.com",
+    messagingSenderId: "392545749555",
+    appId: "1:392545749555:web:07c946fa487beabc37f146"
+  };
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  console.log(db);
+  let insBtn = document.getElementById("Insbtn");
+
+  async function AddDocument_CustomID(){
+      var ref = doc(db,"tableform");
+
+    await setDoc(
+          ref,{
+             
+          }
+      )
+      .then(()=>{
+          alert("Data Added");
+      })
+      .catch((error)=>{
+          alert("Not a valid Data,error:"+error);
+      });
+  }
+  document.getElementById("form").addEventListener("submit", async function (e) {
+      e.preventDefault();
+      var formData = new FormData(e.target);
+      let fname, lname, sem, stream, contact, clg;
+
+        fname = formData.get('fname');
+        lname = formData.get('lname');
+        sem = formData.get('sem');
+        stream = formData.get('stream');
+        contact = formData.get('contact');
+        clg = formData.get('clg');
+
+        if (fname != "" && lname !== "" && sem !== ""&& stream !== "" && contact !== "" && clg !== "") {
+            await addDoc(collection(db, "studentform"), {
+                firstName: fname,
+                lastName: lname,
+                sem: sem,
+                stream: stream,
+                contact: contact,
+                clg: clg
+            });
+            window.location.href = "./index.html"
+        }
+
+        else {
+            alert("NO SUCH DATA");
+        }
+    });
+
+
+
+</script>
+
+</html>

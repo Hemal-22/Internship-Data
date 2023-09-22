@@ -1,0 +1,99 @@
+create database
+
+CREATE DATABASE batch_2022_dhwani;
+
+**********************************************
+create users table
+
+CREATE TABLE users (
+    id int AUTO_INCREMENT,
+    first_name varchar(255),
+    last_name varchar(255),
+    age int(20),
+    gender boolean,
+    created_at datetime,
+    updated_at datetime,
+    deleted_at datetime,
+    PRIMARY KEY (id)
+);
+
+**********************************************
+create posts table
+
+CREATE TABLE posts (
+    id int AUTO_INCREMENT,
+    user_id int NOT NULL,
+    title varchar(50),
+    short_description varchar(100),
+    description varchar(200),
+   	views int(50),
+    created_at datetime,
+    updated_at datetime,
+    deleted_at datetime,
+    PRIMARY KEY (id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+**********************************************
+create comments table
+
+CREATE TABLE comments (
+    id int AUTO_INCREMENT,
+    post_id int NOT NULL,
+    user_id int NOT NULL,
+    content varchar(100),
+    created_at datetime,
+    updated_at datetime,
+    deleted_at datetime,
+    PRIMARY KEY (id),
+    FOREIGN KEY (post_id) REFERENCES posts(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+**********************************************
+alter all three tables on column updated_at for "TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP "
+
+ALTER TABLE posts MODIFY COLUMN updated_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+ALTER TABLE users MODIFY COLUMN updated_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+ALTER TABLE comments MODIFY COLUMN updated_at TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+**********************************************
+alter query for changing gender datatype from boolean to ENUM
+
+ALTER TABLE users MODIFY gender ENUM('male','female');
+
+**********************************************
+insert query for all three tables with created_at and updated_at taking current time and deleted_at keeping null
+
+insert into users (id, first_name, last_name, age, gender, created_at, updated_at) values (1, 'Hestia', 'Oggers', 34, 'Male', now(), now());
+insert into users (id, first_name, last_name, age, gender, created_at, updated_at) values (2, 'Pauly', 'Chittie', 30, 'Female', now(), now());
+insert into users (id, first_name, last_name, age, gender, created_at, updated_at) values (3, 'Ira', 'Rorke', 43, 'Female', now(), now());
+
+
+insert into posts (id, user_id, title, short_description, description, views, created_at, updated_at) values (1, 3, 'access', 'non mattis pulvinar nulla', 'urna ut tellus nulla ut erat id mauris vulputate elementum nullam varius nulla facilisi cras', 2, now(), now());
+insert into posts (id, user_id, title, short_description, description, views, created_at, updated_at) values (2, 2, 'open system', 'sed sagittis nam congue', 'eget eleifend luctus ultricies eu nibh quisque id justo sit amet', 2, now(), now());
+insert into posts (id, user_id, title, short_description, description, views, created_at, updated_at) values (3, 1, 'pricing structure', 'erat fermentum justo', 'odio curabitur convallis duis consequat dui nec nisi volutpat eleifend donec', 1, now(), now());
+insert into posts (id, user_id, title, short_description, description, views, created_at, updated_at) values (4, 3, 'empowering', 'nunc nisl duis bibendum', 'tellus semper interdum mauris ullamcorper purus sit amet nulla quisque', 2, now(), now());
+insert into posts (id, user_id, title, short_description, description, views, created_at, updated_at) values (5, 1, 'interactive', 'pellentesque volutpat dui', 'aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis', 0, now(), now());
+
+
+insert into comments (id, post_id, user_id, content, created_at, updated_at) values (1, 2, 1, 'suspendisse potenti cras in purus eu magna', now(), now());
+insert into comments (id, post_id, user_id, content, created_at, updated_at) values (2, 5, 3, 'id luctus nec molestie sed', now(), now());
+insert into comments (id, post_id, user_id, content, created_at, updated_at) values (3, 4, 2, 'dolor sit amet consectetuer adipiscing', now(), now());
+insert into comments (id, post_id, user_id, content, created_at, updated_at) values (1, 5, 1, 'viverra eget', now(), now());
+insert into comments (id, post_id, user_id, content, created_at, updated_at) values (2, 1, 3, 'vulputate luctus cum sociis natoque penatibus et', now(), now());
+
+**********************************************
+update query for posts
+
+UPDATE posts set views = 1 WHERE views = 0
+
+**********************************************
+update query for users table for setting female as gender
+
+UPDATE users set gender = 'female' WHERE first_name LIKE 'h%'
+
+**********************************************
+select query for posts with 2 views
+
+SELECT * FROM posts WHERE views = 2

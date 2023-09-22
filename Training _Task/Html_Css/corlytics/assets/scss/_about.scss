@@ -1,0 +1,30 @@
+/* scss*/
+
+.about{
+    margin-top: 40px;
+    img{
+       height: 40px;
+       width: 170px;
+    }
+}
+.welcome-text{
+    margin-left: 60px;
+}
+
+.contact-info{
+    margin-top: 60px;
+    ul{
+        list-style-type: none;
+    }
+    li{
+        padding-top: 60px;
+        margin-left: 40px;
+    }
+}
+
+.links{
+    margin: 150px 0px;
+    a{
+        color: red;
+    }
+}

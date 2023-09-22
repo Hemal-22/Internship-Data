@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: bisque;">
+
+    <div>
+        <h1>STUDENT RECORDS</h1>
+        <table id="firebase_table">
+            <thead>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>DEPARTMENT</th>
+                <th>SEM</th>
+                <th>GENDER</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HEMAL</td>
+                    <td>THAKKAR</td>
+                    <td>iMScIT</td>
+                    <td>10</td>
+                    <td>FEMALE</td>
+                </tr>
+            </tbody>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+</body>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/9.6.5/firebase-firestore.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+ // Your web app's Firebase configuration
+ const firebaseConfig = {
+    apiKey: "AIzaSyBbHZ2zos8c28YEVDAtDaclPkvj0Fgkuwk",
+    authDomain: "exercise-2-3c795.firebaseapp.com",
+    projectId: "exercise-2-3c795",
+    storageBucket: "exercise-2-3c795.appspot.com",
+    messagingSenderId: "168504040346",
+    appId: "1:168504040346:web:58412665aee0a3a8d23823"
+  };
+
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+  console.log(db);
+
+  // Get a list of users from your database
+  async function getusers(db) {
+    const usersCol = collection(db, 'Table');
+    const userSnapshot = await getDocs(usersCol);
+    const userList = userSnapshot.docs.map(doc => doc.data());
+    return userList;
+    }
+    let tempList = await getemp(db);
+
+      let tableObj = document.getElementById('firebase_table');
+      let tempHTML ="";
+      tempList.forEach(function (user) {
+         let rowHTML ="<tr>";
+         rowHTML += "<td>" + user.firstname + "</td>";
+         rowHTML += "<td>" + user.lastname + "</td>";
+         rowHTML += "<td>" + user.department + "</td>";
+         rowHTML += "<td>" + user.sem + "</td>";
+         rowHTML += "<td>" + user.gender + "</td>";
+
+        
+         rowHtml += "</tr>";
+    tempHTML += rowHtml;   
+
+      });
+      console.log(tempList);
+      console.log("tempHTML",tempHTML);
+      tableObj.tBodies[1].innerHTML=tempHTML;
+  
+  //let tempList = await getusers(db);
+  //console.log(tempList);
+</script>
+
+</html>

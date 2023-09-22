@@ -1,0 +1,189 @@
+/* settings */
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="./css/settings.css">
+    <title>settings page</title>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <div class="logo">
+                <img src="./images/logo.png" alt="">
+                <h1> CORLYTICS RED ALERTS</h1>
+            </div>
+
+        </nav>
+     </section>
+
+     <!-- main -->
+     <section class="main">
+        <div class="btn">
+          <a href="about.html">About Us</a>
+         </div>
+         <div class="btn">
+            <a href="regulators.html">Choose Regulators</a>
+           </div>
+           <div class="btn">
+            <a href="password.html">Change Password</a>
+           </div>
+           <div class="btn">
+            <a href="notification.html">Notification Settings</a>
+           </div>
+           <div class="btn">
+            <a href="contact.html">Contact Us</a>
+           </div>
+           <div class="btn">
+            <a href="index.html">Logout</a>
+           </div>
+
+     </section>
+     <section class="footer">
+        <footer>
+            <a  href="home.html">
+                <div  class="footbtn">
+                    <i style="font-size: 20px; " class="fas fa-home"></i>
+                   <p>Home</p>
+                </div>
+            </a>
+            <a  href="bookmarks.html">
+                <div  class="footbtn">
+                    <i style="font-size: 20px;" class="far fa-bookmark"></i>
+                   <p>Bookmarks</p>
+                </div>
+            </a>
+
+            <a style="color: #be302c" href="#">
+                <div  class="footbtn">
+                    <i style="font-size: 20px;" class="far fa-bookmark"></i>
+                   <p>Settings</p>
+                </div>
+            </a>
+        </footer>
+    </section>
+    <hr>
+
+</body>
+</html>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+   }
+
+   body{
+       overflow: hidden;
+   }
+
+   .header{
+    top: 0%;
+    width: 100%;
+    position: sticky;
+    background-color: #be302c;
+    padding: 15px;
+}
+
+.header h1{
+    font-size: 25px;
+    color: white;
+    margin-left: 10px;
+}
+
+.logo img{
+    max-width: 50px;
+    border-radius: 50%
+}
+.logo{
+    display: flex;
+    align-items: center;
+
+}
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* main css */
+
+.main{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    min-height: 80vh
+}
+.main a{
+    color: white;
+    text-decoration: none;
+}
+/* footer css */
+
+.footer{
+    bottom: 1px;
+    width: 100%;
+    position: sticky;
+    color: grey;
+    background-color:  rgb(223, 215, 215);;
+}
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 50px;
+}
+.btn{
+    display: flex;
+    cursor: pointer;
+    flex-direction: column;
+    align-items: center;
+    background-color: #be302c ;
+    margin: 10px;
+    padding: 15px;
+}
+.footbtn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+}
+footer a{
+    color: grey;
+    text-decoration: none;
+}
+
+
+
+   @media screen and (max-width: 470px){
+    .header h1{
+        font-size: 15px;
+       }
+    footer{
+        padding: 20px;
+    }
+}
+
+@media screen and (min-width: 540px) and (max-width: 800px){
+    body{
+        overflow: scroll;
+    }
+
+    .main p{
+        color: black;
+    }
+}
+
+
+
+@media screen and (min-width: 915px) and (max-width: 1270px){
+   body{
+       overflow: scroll;
+   }
+}
